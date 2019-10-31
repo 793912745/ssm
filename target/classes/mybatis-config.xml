@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--引入外部资源文件-->
+    <properties resource="db.properties"/>
+
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <!--取别名-->
+    <typeAliases>
+        <!--<typeAlias type="cn.kgc.entity.User" alias="user"></typeAlias>-->
+        <package name="cn.kgc.entity"/>
+
+    </typeAliases>
+
+
+
+    <!--配置mybatis的配置环境-->
+    <environments default="development">
+        <environment id="development">
+            <!--事务管理-->
+            <transactionManager type="JDBC">
+                <property name="" value=""/>
+            </transactionManager>
+            <!--连接数据源-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${mysql.driver}"/>
+                <property name="url" value="${mysql.url}"/>
+                <property name="username" value="${mysql.username}"/>
+                <property name="password" value="${mysql.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="cn/kgc/dao/user/UserMapper.xml"/>
+        <!--<mapper resource="cn/kgc/dao/bill/BillMapper.xml"/>
+        <mapper resource="cn/kgc/dao/provider/ProviderMapper.xml"/>-->
+    </mappers>
+</configuration>
